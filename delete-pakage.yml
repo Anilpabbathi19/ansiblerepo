@@ -1,0 +1,11 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: uninstalling pakage
+      dnf:
+        name: docker
+        state: absent

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: create users 
+      user: name=sunil

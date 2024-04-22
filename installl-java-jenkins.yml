@@ -1,0 +1,37 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: install java software
+      dnf:
+        name: java-11*
+        state: present
+
+    - name: install wget 
+      dnf:
+        name: wget
+        state: present
+
+    - name: download jenkins software
+      get_url:
+        url: sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+        dest: /home/ansible
+
+    - name: download jenkins key
+      rpm_key:
+        state: present
+        key: sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+
+    - name: install jenkins software
+      dnf:
+        name: jenkins
+        state: present
+
+    - name: start jenkins service
+      service:
+        name: jenkins
+        state: started
+        enabled: yes

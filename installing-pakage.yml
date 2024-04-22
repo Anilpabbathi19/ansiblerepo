@@ -1,0 +1,11 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing docker pakages
+      dnf:
+        name: docker
+        state: installed

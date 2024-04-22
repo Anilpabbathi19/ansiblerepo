@@ -1,0 +1,14 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing apache2 for debian
+      action: apt-get name=apache2 state=present
+      when: ansible_os_family = "Debian"
+
+    - name: installing httpd for redhat
+      action: dnf name=httpd state=present
+      when: ansible_os_family = "RedHat"

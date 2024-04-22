@@ -1,0 +1,9 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing httpd software in webservers
+      action: dnf name=httpd state=present

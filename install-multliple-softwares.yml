@@ -1,0 +1,12 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+
+  tasks:
+    - name: installing multiple softwares into the webservers
+      dnf:
+        name: ['java','git','tree','httpd','docker']
+        state: absent

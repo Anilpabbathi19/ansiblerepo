@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing git s/w in webservers 
+      action: dnf pkg=git state=installed
+
+    - name: installing sql s/w in webservers 
+      action: dnf name=mysql state=present

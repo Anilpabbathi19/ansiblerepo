@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  connection: ssh
+  user: ansible
+
+  tasks:
+    - name: install httpd pakage
+      action: dnf name=httpd state=present

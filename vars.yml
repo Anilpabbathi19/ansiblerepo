@@ -1,0 +1,12 @@
+---
+- hosts: all
+  user: ansible
+  become: true
+  connection: ssh
+
+  vars:
+    pkgname: httpd
+
+  tasks:
+    - name: installing httpd software in webservers
+      action: dnf name='{{pkgname}}' state=present

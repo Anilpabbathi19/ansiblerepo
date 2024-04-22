@@ -1,0 +1,15 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  connection: ssh
+
+
+  tasks:
+    - name: installing httpd server in both webservers
+      action: dnf name=httpd state=present
+      notify: start httpd service
+
+  handlers:
+    - name: start httpd service
+      action: service name=httpd state=started

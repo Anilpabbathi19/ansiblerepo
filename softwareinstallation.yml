@@ -1,0 +1,11 @@
+---
+- hosts: all
+  user: ansible
+  connection: ssh
+  become: yes
+
+  tasks:
+    - name: installing tree software in webservers
+      dnf:
+        name: tree
+        state: latest
